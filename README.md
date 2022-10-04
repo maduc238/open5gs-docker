@@ -65,11 +65,15 @@ Tên đăng nhập: `admin`
 Mật khẩu: `1423`
 
 ## 5. Công việc thực hiện:
-Máy chủ Docker: wireshark bắt các gói 20.0.0.1 trong interface mới tạo của docker
+Lấy id của subnet 4g tạo lúc đầu
+```
+docker network ls | grep 4g
+```
+Máy chủ Docker: capture các gói tin chuyển qua interface mới tạo của docker có dạng br-id
 ```
 sudo wireshark
 ```
-Các máy container: dùng tcpdump bắt các gói trong interface lo
+Các máy container: dùng tcpdump bắt các gói trong interface loopback
 ```
-tcp
+tcpdump -i lo &> loopback.pcap
 ```
