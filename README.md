@@ -1,5 +1,20 @@
 # Open5GS bằng Docker
 
+### Mục lục
+
+[1. Tạo gateway giao tiếp](#nung)
+
+[2. Pull các image từ Docker Hub](#slong)
+
+[3. Docker Run các image vừa nhận được](#slam)
+
+[4. Chạy các Container và config chúng](#sli)
+- [4.1. Phần User Plane](#slinung)
+- [4.2. Phần Control Plane](#slislong)
+
+[5. Công việc thực hiện](#ha)
+
+<a name="nung"></a>
 ## 1. Tạo gateway giao tiếp
 Thêm gateway có ip là 20.0.0.1
 ```
@@ -10,6 +25,7 @@ Kiểm tra network cho Docker bằng lệnh
 docker network ls
 ```
 
+<a name="slong"></a>
 ## 2. Pull các image từ Docker Hub
 Docker của phần User Plane:
 ```
@@ -20,6 +36,7 @@ Docker của phần Control Plane:
 docker pull maduc238/open5gs:control-plane 
 ```
 
+<a name="slam"></a>
 ## 3. Docker Run các image vừa nhận được
 Lưu ý: Hai Docker chạy trên 2 terminal khác nhau
 
@@ -32,8 +49,10 @@ Control Plane:
 docker run --name open5gs-c -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.2 --device /dev/net/tun maduc238/open5gs:control-plane
 ```
 
+<a name="sli"></a>
 ## 4. Chạy các Container và config chúng
-### 4.1. Phần User Plane:
+<a name="slinung"></a>
+### 4.1. Phần User Plane
 Cấu hình mạng:
 ```
 docker exec -it open5gs-u bash 
@@ -48,7 +67,8 @@ Chạy Container:
 cd home/open5gs 
 ./run.sh 
 ```
-### 4.2. Phần Control Plane:
+<a name="slislong"></a>
+### 4.2. Phần Control Plane
 Cấu hình mạng:
 ```
 docker exec -it open5gs-c bash 
@@ -65,7 +85,8 @@ Truy cập địa chỉ [20.0.0.2:3000](http://20.0.0.2:3000)
 Tên đăng nhập: `admin`
 Mật khẩu: `1423`
 
-## 5. Công việc thực hiện:
+<a name="ha"></a>
+## 5. Công việc thực hiện
 Lấy id của subnet 4g tạo lúc đầu
 ```
 docker network ls | grep 4g
