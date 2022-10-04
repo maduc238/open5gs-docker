@@ -60,7 +60,7 @@ cd open5gs
 ./run4g_cp.sh
 ```
 Vào phần web UI:
-Truy cập địa chỉ [20.0.0.2:3000](20.0.0.2:3000)
+Truy cập địa chỉ [20.0.0.2:3000](http://20.0.0.2:3000)
 Tên đăng nhập: `admin`
 Mật khẩu: `1423`
 
