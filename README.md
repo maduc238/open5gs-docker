@@ -22,6 +22,7 @@ docker pull maduc238/open5gs:control-plane
 
 ## 3. Docker Run các image vừa nhận được
 Lưu ý: Hai Docker chạy trên 2 terminal khác nhau
+
 User Plane:
 ```
 docker run --name open5gs-u -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.5 --device /dev/net/tun maduc238/open5gs:user-plane
