@@ -57,6 +57,7 @@ Control Plane:
 ```
 docker run --name open5gs-c -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.2 --device /dev/net/tun maduc238/open5gs:control-plane
 ```
+Thêm port: `-d 36412:36412/sctp`
 
 <a name="sli"></a>
 ## 4. Chạy các Container và config chúng
