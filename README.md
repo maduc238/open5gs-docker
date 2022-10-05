@@ -107,10 +107,4 @@ tcpdump -i lo -s 65535 -w loopback.pcap
 ## New Note
 
 Kết nối eNodeB với cổng USB của thiết bị
-
-Đọc các port SD của Ubuntu:
-```
-sudo parted -l
-```
-
-Tìm tên ... 
+...
