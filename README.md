@@ -29,6 +29,13 @@ Sơ đồ cấu hình:
       |                         |  20.0.0.2,3,4                 |   20.0.0.5,6                  if: 20.0.0.0/24
     ------------------------------------------------------------------------------------------------------------
 ```
+Bảng thông tin Docker:
+| Docker # | Thành phần | IP Address | OS |
+| --- | --- | --- | --- |
+| EPC Control Plane | MME <br> SGW-C <br> SMF | 20.0.0.2/24 <br> 20.0.0.3/24 <br> 20.0.0.4 | Ubuntu 20.04 |
+| EPC User Plane | SGW-U <br> UPF | 20.0.0.5/24 <br> 20.0.0.6/24 | Ubuntu 20.04 |
+| OpenAirInterface | eNodeB, UE | 20.0.0.55/24 | Ubuntu 18.04 |
+
 Kiểm tra network cho Docker bằng lệnh
 ```
 docker network ls
