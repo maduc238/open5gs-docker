@@ -62,7 +62,7 @@ docker run --name open5gs-c -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g
 ## 4. Chạy các Container và config chúng
 <a name="slinung"></a>
 ### 4.1. Phần User Plane
-Cấu hình mạng:
+Cấu hình mạng và chạy container:
 ```
 docker exec -it open5gs-u bash 
 ip addr add 20.0.0.6/24 dev eth0 
@@ -70,24 +70,18 @@ ip tuntap add name ogs-internet mode tun
 ip addr add 172.17.0.23/16 dev ogs-internet  
 ip link set ogs-internet up  
 iptables -t nat -A POSTROUTING -s 172.17.0.23 ! -o ogs-internet -j MASQUERADE 
-```
-Chạy Container:
-```
 cd home/open5gs 
 ./run.sh 
 ```
 <a name="slislong"></a>
 ### 4.2. Phần Control Plane
-Cấu hình mạng:
+Cấu hình mạng và chạy container:
 ```
 docker exec -it open5gs-c bash 
 ip addr add 20.0.0.3/24 dev eth0 
 ip addr add 20.0.0.4/24 dev eth0 
-```
-Chạy Container:
-```
-cd open5gs
-./run4g_cp.sh
+cd open5gs 
+./run4g_cp.sh 
 ```
 Vào phần web UI:
 Truy cập địa chỉ [20.0.0.2:3000](http://20.0.0.2:3000)
@@ -109,4 +103,13 @@ Các máy container: dùng tcpdump bắt các gói trong interface loopback
 tcpdump -i lo -s 65535 -w loopback.pcap
 ```
 
-## New note
+## New Note
+
+Kết nối eNodeB với cổng USB của thiết bị
+
+Đọc các port SD của Ubuntu:
+```
+sudo parted -l
+```
+
+Tìm tên ... 
