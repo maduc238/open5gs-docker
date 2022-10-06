@@ -32,7 +32,7 @@ Sơ đồ cấu hình:
 Bảng thông tin Docker:
 | Docker # | Thành phần | IP Address | OS |
 | --- | --- | --- | --- |
-| EPC Control Plane | MME <br> SGW-C <br> SMF | 20.0.0.2/24 <br> 20.0.0.3/24 <br> 20.0.0.4 | Ubuntu 20.04 |
+| EPC Control Plane | MME <br> SGW-C <br> SMF | 20.0.0.2/24 <br> 20.0.0.3/24 <br> 20.0.0.4/24 | Ubuntu 20.04 |
 | EPC User Plane | SGW-U <br> UPF | 20.0.0.5/24 <br> 20.0.0.6/24 | Ubuntu 20.04 |
 | OpenAirInterface | eNodeB, UE | 20.0.0.55/24 | Ubuntu 18.04 |
 
