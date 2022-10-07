@@ -62,9 +62,9 @@ docker run --name open5gs-u -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g
 ```
 Control Plane:
 ```
-docker run --name open5gs-c -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.2 --device /dev/net/tun maduc238/open5gs:control-plane
+docker run --name open5gs-c -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.2 maduc238/open5gs:control-plane
 ```
-Thêm port: `-p 36412:36412/sctp`
+Thêm port kết nối máy chính, ví dụ: `-p 36412:36412/sctp`
 
 <a name="sli"></a>
 ## 4. Chạy các Container và config chúng
@@ -75,9 +75,9 @@ Cấu hình mạng và chạy container:
 docker exec -it open5gs-u bash 
 ip addr add 20.0.0.6/24 dev eth0 
 ip tuntap add name ogs-internet mode tun  
-ip addr add 172.17.0.23/16 dev ogs-internet  
+ip addr add 60.17.0.23/16 dev ogs-internet  
 ip link set ogs-internet up  
-iptables -t nat -A POSTROUTING -s 172.17.0.23 ! -o ogs-internet -j MASQUERADE 
+iptables -t nat -A POSTROUTING -s 60.17.0.23 ! -o ogs-internet -j MASQUERADE 
 cd home/open5gs 
 ./run.sh 
 ```
