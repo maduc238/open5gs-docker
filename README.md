@@ -74,6 +74,9 @@ Thêm port kết nối máy chính, ví dụ: `-p 36412:36412/sctp`
 <a name="slinung"></a>
 ### 4.1. Phần User Plane
 Cấu hình mạng và chạy container:
+
+Lưu ý: Cần chỉnh ip của interface S1-U (gtpu) cho SGW-U: `vim install/etc/open5gs/sgwu.yaml`
+
 ```
 docker exec -it open5gs-u bash 
 ip addr add 20.0.0.6/24 dev eth0 
