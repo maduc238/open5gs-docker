@@ -111,7 +111,4 @@ Các máy container: dùng tcpdump bắt các gói trong interface loopback
 tcpdump -i lo -s 65535 -w loopback.pcap
 ```
 
-## New Note
-
-Kết nối eNodeB với cổng USB của thiết bị
-...
+Xong !
