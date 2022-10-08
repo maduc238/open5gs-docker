@@ -14,6 +14,8 @@
 
 [5. Công việc thực hiện](#ha)
 
+<img src="images/Open5gs-config.jpg">
+
 <a name="nung"></a>
 ## 1. Tạo gateway giao tiếp
 Thêm gateway có ip là 20.0.0.1
