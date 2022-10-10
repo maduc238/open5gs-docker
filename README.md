@@ -79,6 +79,7 @@ Thêm port kết nối máy chính, ví dụ: `-p 36412:36412/sctp`
 srsRAN:
 ```
 docker run --name srsenb -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.20 aothatday/open5gs:srsenb
+```
 
 <a name="sli"></a>
 ## 4. Chạy các Container và config chúng
@@ -95,6 +96,7 @@ iptables -t nat -A POSTROUTING -s 60.17.0.23 ! -o ogs-internet -j MASQUERADE
 cd home/open5gs 
 ./run.sh 
 ```
+
 <a name="slislong"></a>
 ### 4.2. Phần Control Plane
 Cấu hình mạng và chạy container:
@@ -112,19 +114,19 @@ Mật khẩu: `1423`
 
 <a name="slislam"></a>
 ### 4.3. Phần eNB, UE
-Chạy eNB và UE trên 2 terminal khác nhau
+**Lưu ý: Chạy eNB và UE trên 2 terminal khác nhau**
 
 Trên eNB:
 ```
 docker exec -it srsenb bash
-cd srsRAN
-./build/srsenb/src/srsenb ./srsenb/enb.conf
+cd srsRAN/srsenb
+../build/srsenb/src/srsenb ./enb.conf 
 ```
 Trên UE:
 ```
 docker exec -it srsenb bash
-cd srsRAN
-./build/srsue/src/srsue ./srsue/ue.conf
+cd srsRAN/srsue
+../build/srsue/src/srsue ./ue.conf
 ```
 
 <a name="ha"></a>
