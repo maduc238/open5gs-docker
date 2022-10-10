@@ -29,7 +29,7 @@ Sơ đồ cấu hình:
 |  eNodeB   |        |  EPC Control Plane  |        |    EPC User Plane   |------------------------------------- INTERNET
 -------------        -----------------------        -----------------------
       |                         |                               |
-      |                         |  20.0.0.2,3,4                 |   20.0.0.5,6                  if: 20.0.0.0/24
+      |  20.0.0.20              |  20.0.0.2,3,4                 |  20.0.0.5,6                  if: 20.0.0.0/24
     ------------------------------------------------------------------------------------------------------------
 ```
 Bảng thông tin Docker:
@@ -61,7 +61,7 @@ docker pull aothatday/open5gs:srsenb
 
 <a name="slam"></a>
 ## 3. Docker Run các image vừa nhận được
-Lưu ý: Hai Docker chạy trên 2 terminal khác nhau
+**Lưu ý: Hai Docker chạy trên 2 terminal khác nhau**
 
 User Plane: yêu cầu kết nối với mạng, do đó cần tạo interface ảo với mode tun
 ```
