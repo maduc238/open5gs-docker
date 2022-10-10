@@ -11,6 +11,7 @@
 [4. Chạy các Container và config chúng](#sli)
 - [4.1. Phần User Plane](#slinung)
 - [4.2. Phần Control Plane](#slislong)
+- [4.3. Phần eNB, UE](#slislam)
 
 [5. Công việc thực hiện](#ha)
 
@@ -53,6 +54,10 @@ Docker của phần Control Plane:
 ```
 docker pull maduc238/open5gs:control-plane 
 ```
+Docker của srsRAN
+```
+docker pull aothatday/open5gs:srsenb
+```
 
 <a name="slam"></a>
 ## 3. Docker Run các image vừa nhận được
@@ -70,6 +75,10 @@ Control Plane:
 docker run --name open5gs-c -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.2 maduc238/open5gs:control-plane
 ```
 Thêm port kết nối máy chính, ví dụ: `-p 36412:36412/sctp`
+
+srsRAN:
+```
+docker run --name srsenb -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.20 aothatday/open5gs:srsenb
 
 <a name="sli"></a>
 ## 4. Chạy các Container và config chúng
@@ -100,6 +109,23 @@ Vào phần web UI:
 Truy cập địa chỉ [20.0.0.2:3000](http://20.0.0.2:3000)
 Tên đăng nhập: `admin`
 Mật khẩu: `1423`
+
+<a name="slislam"></a>
+### 4.3. Phần eNB, UE
+Chạy eNB và UE trên 2 terminal khác nhau
+
+Trên eNB:
+```
+docker exec -it srsenb bash
+cd srsRAN
+./build/srsenb/src/srsenb ./srsenb/enb.conf
+```
+Trên UE:
+```
+docker exec -it srsenb bash
+cd srsRAN
+./build/srsue/src/srsue ./srsue/ue.conf
+```
 
 <a name="ha"></a>
 ## 5. Công việc thực hiện
