@@ -85,3 +85,34 @@ Execute the file : **./ccr-cca-event-client.ksh**
 Sau đó sẽ hiện terminal chạy...
 
 ## Changing Default settings
+- Edit the file : **jdiameter/examples/charging-server-simulator-perf-test/src/main/resources/config-server.xml**
+```
+<LocalPeer>
+    <URI value="aaa://127.0.0.1:3868" />
+    <IPAddresses>
+      <IPAddress value="127.0.0.1" />
+    </IPAddresses>
+    <Realm value="Restcomm.org" />
+....
+
+ <Network>
+    <Peers>
+      <Peer name="aaa://127.0.0.1:13868" attempt_connect="false" rating="1" />
+    </Peers>
+    <Realms>
+      <Realm name="Restcomm.org" peers="127.0.0.1" local_action="LOCAL" dynamic="false" exp_time="1">
+        <ApplicationID>
+```
+- Edit the file **jdiameter/examples/charging-server-simulator-perf-config/seagull/ccr-cca-event-client.xml**
+```
+...
+
+<command name="CCR">
+      <avp name="Session-Id" value="value_is_replaced"> </avp>
+      <avp name="Auth-Session-State" value="0"> </avp>
+      <avp name="Origin-Host" value="storm01.Restcomm.org"> </avp>
+      <avp name="Origin-Realm" value="Restcomm.org"> </avp>
+      <avp name="Destination-Realm" value="Restcomm.org"> </avp>
+      <avp name="Destination-Host" value="127.0.0.1"> </avp>
+      <avp name="Auth-Application-Id" value="4"></avp>
+```
