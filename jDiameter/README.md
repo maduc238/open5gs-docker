@@ -26,6 +26,10 @@ wget http://mirrors.kernel.org/ubuntu/pool/universe/k/ksh/ksh_93u+20120801-3.1ub
 sudo apt install binfmt-support
 sudo dpkg -i ksh_93u+20120801-3.1ubuntu1_amd64.deb
 ```
+Với ubuntu:
+```
+sudo apt install ksh
+```
 
 ## Cài Seagull
 Tải file .gz và cài rpm (nếu chạy được)
