@@ -1,4 +1,5 @@
 # Cài jDiameter
+https://github.com/RestComm/documentation/blob/master/core/src/main/asciidoc/tutorials/jdiameter-quick-telscale-diameter-performance-testing-using-seagull.adoc
 
 ## Cài VS Code:
 ```
