@@ -65,7 +65,7 @@ docker pull aothatday/open5gs:srsenb
 
 User Plane: yêu cầu kết nối với mạng, do đó cần tạo interface ảo với mode tun
 ```
-docker run --name open5gs-u -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --network host --device /dev/net/tun maduc238/open5gs:user-plane
+docker run --name open5gs-u -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.5 --device /dev/net/tun maduc238/open5gs:user-plane
 ```
 
 Có thể chạy trên mạng của máy chính: `--network host`
@@ -88,7 +88,6 @@ docker run --name srsenb -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --
 Cấu hình mạng và chạy container:
 ```
 docker exec -it open5gs-u bash 
-ip addr add 20.0.0.5/24 dev eth0 
 ip addr add 20.0.0.6/24 dev eth0 
 ip tuntap add name ogs-internet mode tun  
 ip addr add 60.17.0.23/16 dev ogs-internet  
