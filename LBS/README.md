@@ -32,3 +32,19 @@ SLs is the interface between the MME and the E-SMLC. The SLs interface is used t
 ## GMLC LTE Call Flow
 
 <img src="../images/GMLC-LTE_call_flow.png">
+
+## Positioning Procedure
+
+Figure show outlines a control-plane positioning procedure where an application outside the mobile network requests the position of a target UE
+
+<img src="../images/EPS-Positioning-Procedure.jpg">
+
+A. An external LCS client requests the current location and optionally the velocity of a target UE. The LCS client may also request a specific position QoS. The GMLC authorizes the LCS client. The GMLC queries the HSS to provide MME address of the target UE and forwards the message to the MME.
+
+B. If the target UE is in Idle mode the MME performs the Network Initiated Service Request procedure to establish a connection with the UE. This means that the MME pages the UE and, when the UE responds, indicating that a signaling connection between the UE and MME is established. In addition, the user may be informed that the UE positioning has been requested and the user may need to confirm that positioning is allowed.
+
+C. Depending on the requested positioning QoS and supported capabilities in the eNodeB, the E-SMLC may initiate an LPPa location procedure towards the eNodeB. The LPPa procedures support mechanisms to obtain positioning measurements for the E-CID positioning method or assistance data for the OTDOA method.
+
+D. In addition to, or instead of step C, the E-SMLC may initiate LPP procedures towards the UE. The LPP procedure supports mechanisms to obtain a location estimate or positioning measurements and to transfer location assistance data to the UE.
+
+E. The E-SMLC provides a location service response to the MME which passes the response further to the GMLC. The GMLC checks that the Privacy profile of the subscriber is fulfilled and passes the response back to the Application/LCS client that requested the positioning.
