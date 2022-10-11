@@ -4,6 +4,7 @@
 - Source code JDiameter: https://jar-download.com/artifacts/org.mobicents.diameter/jdiameter-api/1.7.0.75/source-code
 - RestComm/gmlc: https://github.com/RestComm/gmlc
 - Documentation: https://documentation.restcomm.com/connect/tutorials/Restcomm%20-%20Geolocation%20API%20gathering%20location%20information%20from%20GSM%20networks.html
+- Full doc: https://github.com/RestComm/gmlc/blob/master/docs/adminguide/sources-asciidoc/src/main/asciidoc/Chapter-Overview.adoc
 
 **Mục đích: Tạo GMLC, E-SMLC và các luồng Diameter tương ứng**
 
