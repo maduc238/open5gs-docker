@@ -118,15 +118,15 @@ Mật khẩu: `1423`
 ### 4.3. Phần eNB, UE
 **Lưu ý: Chạy eNB và UE trên 2 terminal khác nhau**
 
-Trên eNB:
+**Trên eNB:**
 ```
 docker exec -it srsenb bash
 cd srsRAN/srsenb
 ../build/srsenb/src/srsenb ./enb.conf 
 ```
-**Với eNB thật, sửa file ...**
+**Với eNB thật, sửa file /root/.config/srsran/enb.conf và chạy srsenb**
 
-Trên UE:
+**Trên UE:**
 ```
 docker exec -it srsenb bash
 cd srsRAN/srsue
