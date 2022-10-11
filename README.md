@@ -78,7 +78,7 @@ Thêm port kết nối máy chính, ví dụ: `-p 36412:36412/sctp`
 
 srsRAN:
 ```
-docker run --name srsenb -d -t --privileged --net 4g --ip 20.0.0.20 aothatday/open5gs:srsenb
+docker run --name srsenb -d -t --privileged /dev/bus/usb:/dev/bus/usb --net 4g --ip 20.0.0.20 aothatday/open5gs:srsenb
 ```
 
 <a name="sli"></a>
@@ -95,7 +95,7 @@ ip link set ogs-internet up
 iptables -t nat -A POSTROUTING -s 60.17.0.23 ! -o ogs-internet -j MASQUERADE 
 cd home/open5gs 
 ```
-Lưu ý: Sửa IP trước khi chạy
+**Lưu ý: Sửa IP trước khi chạy trong sgw-u**
 ```
 ./run.sh 
 ```
@@ -123,9 +123,9 @@ Trên eNB:
 docker exec -it srsenb bash
 cd srsRAN/srsenb
 ../build/srsenb/src/srsenb ./enb.conf 
-Với eNB thật, sửa file ...
-
 ```
+**Với eNB thật, sửa file ...**
+
 Trên UE:
 ```
 docker exec -it srsenb bash
