@@ -78,7 +78,7 @@ Thêm port kết nối máy chính, ví dụ: `-p 36412:36412/sctp`
 
 srsRAN:
 ```
-docker run --name srsenb -d -t --cap-add=NET_ADMIN --cap-add=NET_RAW --net 4g --ip 20.0.0.20 aothatday/open5gs:srsenb
+docker run --name srsenb -d -t --privileged --net 4g --ip 20.0.0.20 aothatday/open5gs:srsenb
 ```
 
 <a name="sli"></a>
