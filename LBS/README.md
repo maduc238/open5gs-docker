@@ -14,3 +14,7 @@ The Gateway Mobile Location Center (GMLC) is the first node an external LCS clie
 - The “Requesting GMLC” is the GMLC, which receives the request from the LCS client.
 - The “Visited GMLC” is the GMLC, which is associated with the serving node of the target mobile.
 - The “Home GMLC” is the GMLC residing in the target mobile’s home PLMN, which is responsible for the control of privacy checking of the target mobile.
+
+## GMLC LTE Call Flow
+
+<img src="../images/GMLC-LTE_call_flow.png">
