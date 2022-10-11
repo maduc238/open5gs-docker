@@ -94,9 +94,11 @@ ip addr add 60.17.0.23/16 dev ogs-internet
 ip link set ogs-internet up  
 iptables -t nat -A POSTROUTING -s 60.17.0.23 ! -o ogs-internet -j MASQUERADE 
 cd home/open5gs 
+```
+Lưu ý: Sửa IP trước khi chạy
+```
 ./run.sh 
 ```
-
 <a name="slislong"></a>
 ### 4.2. Phần Control Plane
 Cấu hình mạng và chạy container:
