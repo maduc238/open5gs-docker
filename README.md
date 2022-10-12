@@ -88,15 +88,26 @@ docker run --name srsenb -d -t --privileged -v /dev/bus/usb:/dev/bus/usb --net 4
 Cấu hình mạng và chạy container:
 ```
 docker exec -it open5gs-u bash 
+```
+```
 ip addr add 20.0.0.6/24 dev eth0 
-ip tuntap add name ogs-internet mode tun  
-ip addr add 60.17.0.23/16 dev ogs-internet  
-ip link set ogs-internet up  
+```
+```
+ip tuntap add name ogs-internet mode tun 
+```
+```
+ip addr add 60.17.0.23/16 dev ogs-internet 
+```
+```
+ip link set ogs-internet up 
+```
+```
 iptables -t nat -A POSTROUTING -s 60.17.0.23 ! -o ogs-internet -j MASQUERADE 
+```
+
+**Lưu ý: Sửa IP nếu có chỉnh sửa trước khi chạy trong sgw-u**
+```
 cd home/open5gs 
-```
-**Lưu ý: Sửa IP trước khi chạy trong sgw-u**
-```
 ./run.sh 
 ```
 <a name="slislong"></a>
@@ -104,8 +115,14 @@ cd home/open5gs
 Cấu hình mạng và chạy container:
 ```
 docker exec -it open5gs-c bash 
+```
+```
 ip addr add 20.0.0.3/24 dev eth0 
+```
+```
 ip addr add 20.0.0.4/24 dev eth0 
+```
+```
 cd open5gs 
 ./run4g_cp.sh 
 ```
@@ -121,6 +138,8 @@ Mật khẩu: `1423`
 **Trên eNB:**
 ```
 docker exec -it srsenb bash
+```
+```
 cd srsRAN/srsenb
 ../build/srsenb/src/srsenb ./enb.conf 
 ```
@@ -129,6 +148,8 @@ cd srsRAN/srsenb
 **Trên UE:**
 ```
 docker exec -it srsenb bash
+```
+```
 cd srsRAN/srsue
 ../build/srsue/src/srsue ./ue.conf
 ```
