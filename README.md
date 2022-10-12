@@ -124,7 +124,7 @@ docker exec -it srsenb bash
 cd srsRAN/srsenb
 ../build/srsenb/src/srsenb ./enb.conf 
 ```
-**Với eNB thật, sửa file /root/.config/srsran/enb.conf và chạy srsenb**
+**Với eNB thật, sửa `file /root/.config/srsran/enb.conf` và chạy `srsenb`**
 
 **Trên UE:**
 ```
