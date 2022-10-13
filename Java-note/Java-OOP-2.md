@@ -158,3 +158,12 @@ public class StreamMain {
     }
 }
 ```
+Khi chạy chương trình, kết quả nhận được:
+```
+Thành phố của Việt Nam:
+Vietnam, Hanoi
+Vietnam, HCM
+```
+
+# Java Instanceof
+https://niithanoi.edu.vn/lap-trinh-java.html#chuong-iv-phan-8-java-instanceof
