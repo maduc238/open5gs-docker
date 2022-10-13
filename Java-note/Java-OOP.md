@@ -141,3 +141,146 @@ public static void myMethod() {
     System.out.println("Phương thức myMethod được gọi");
 }
 ```
+
+Có thể thấy:
+- Từ khóa `public` cho phép truy cập phương thức **từ bên ngoài**
+- Từ khóa `static` cho phếp truy cập phương thức mà **không cần tạo đối tượng**
+- Từ khóa `void` biểu thị phương thức này không trả về bất kỳ giá trị nào
+
+Cú pháp đầy đủ để định nghĩa một phương thức trong Java là:
+```
+
+modifier static returnType nameOfMethod (Parameter List) {
+    // method body
+}
+```
+
+Trong đó:
+- **modifier** xác định mức độ truy cập như `public`, `private` và `protected`
+- **static** nếu sử dụng nó thì phương thức có thể được truy cập mà không cần tạo đối tượng
+- **returnType** giá trị trả về của phương thức
+- **nameOfMethod** tên của phương thức
+- **Parameter** các tham số là các giá trị được truyền cho một phương thức
+- **Method body** xác định phương thức sẽ làm gì, cách các tham số được thao tác với các câu lệnh lập trình và giá trị nào được trả về
+
+Khi phương thức được đặt `static` thì có thể gọi trực tiếp:
+```
+myMethod();
+```
+Còn khi không gọi `static`, chúng ta phải gọi thông qua đối tượng. Giả sử dưới đây đã tạo đối tượng `den` của Class `Den`:
+```
+den.myMethod();
+```
+- Đầu tiên, trình điều khiển chương trình bắt đầu trong hàm main (không quan tâm main được đặt tại vị trí nào trong file code)
+- Khi gặp phương thức nào hợp lệ, nhảy để thực thi code bên trong phương thức đã được định nghĩa trong class
+- Sau đó trình điều khiển lại tiếp tục nhảy đến dòng tiếp theo (trong main), sau phương thức vừa thực thi
+
+## Ví dụ phương thức trong Java
+
+```
+// Ví dụ phương thức trong Java
+class Main {
+
+    public static void main(String[] args) {
+        System.out.println("Sắp gọi đến một phương thức");
+
+        // Gọi phương thức
+        myMethod();
+
+        System.out.println("Phương thức thực thi thành công");
+    }
+
+    // Định nghĩa phương thức
+    private static void myMethod(){
+        System.out.println("Dòng này in từ trong myMethod");
+    }
+}
+```
+
+## Phương thức chấp nhận đối số và có giá trị trả về trong Java
+Chỉ cần thêm `return`
+
+# Constructor trong Java
+## Constructor là gì?
+
+Một constructor là hàm tạo, tương tự như một phương thức nhưng không thực sự là phương thức, được gọi tự động khi class được khởi tạo
+
+Trình biên dịch Java phân biệt giữa một phương thức và một hàm tạo theo tên và kiểu trả về của nó. Moto hàm tạo phải có **cùng tên** với class và không phải trả về bất kỳ giá trị nào
+
+```
+class ViDuConstructor {
+    ViDuConstructor() {
+        // Phần thân constructor
+    }
+}
+```
+
+Còn nếu khai báo `void` thì nó không phải là constructor
+
+## Ví dụ về contructor
+
+```
+// Ví dụ về constructor trong Java
+class ConsMain {
+    private int x;
+
+    // constructor
+    private ConsMain(){
+        System.out.println("Constructor được gọi");
+        x = 10;
+    }
+
+    public static void main(String[] args){
+        ConsMain obj = new ConsMain();
+        System.out.println("Giá trị của x = " + obj.x);
+    }
+}
+```
+Khi được chạy, kết quả nhận được:
+```
+Constructor được gọi
+Giá trị của x = 10
+```
+Như vậy constructor được gọi ngay khi class được tạo
+
+Constructor có thể có hoặc không chấp nhận đối số
+
+## Constructor không đối số (không tham số)
+
+Constructor không có tham số nào khi định nghĩa được gọi là constructor không đối số (no-arg constructor).
+
+```
+accessModifier ClassName() {
+    // constructor body
+}
+```
+- **accessModifier** là chỉ định mức độ truy cập cho constructor
+- **ClassName** là tên của class, vì tên của constructor trùng với tên của class
+
+Ví dụ về constructor không đối số:
+
+```
+/ Ví dụ về constructor không đối số
+class NoArgConstructor {
+
+    int i;
+
+    // Constructor không đối số
+    private NoArgConstructor(){
+        i = 10;
+        System.out.println("Đối tượng được tạo và i = " + i);
+    }
+
+    public static void main(String[] args) {
+
+        // Tạo đối tượng
+        NoArgConstructor obj = new NoArgConstructor();
+    }
+}
+```
+Khi chạy chương trình:
+```
+Đối tượng được tạo và i = 10
+```
+Trong ví dụ trên có từ khóa `private`, chỉ định mức độ truy cập của constructor `NoArgConstructor`, làm cho nó chỉ có thể truy cập từ class của nó
+
