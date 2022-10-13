@@ -99,3 +99,45 @@ class TaoDoiTuongDen {
 # Phương thức trong Java
 ## Phương thức là gì?
 
+Ví dụ trong toán học, một hàm trả về bình phương của x: f(x) = x^2
+- Nếu x = 2 thì f(2) = 4
+- Nếu x = 3 thì f(3) = 9
+- ...
+
+Tương tự trong việc lập trình, một hàm là một khối code thực hiện một nhiệm vụ cụ thể. Trong OOP, một hàm được gọi với tên gọi khác là **Phương thức** để gần gũi hơn với ý nghĩa hướng đối tượng hơn
+
+**Phương thức** trong tiếng anh là **method**
+
+Các method này được liên kết với một class, và nó định nghĩa hành vi của class đó
+
+## Các kiểu phương thức
+Chia làm 2 loại phương thức:
+- Standard Library Methods
+- User-defined Methods
+
+## Phương thức trong thư viện chuẩn
+Các phương thức kiểu Standard Library Methods là các phương thức được dựng sẵn trong Java (Build-in Functions) và có thể sử dụng chúng ngay
+
+Các thư viện chuẩn này đi kèm với thư viện Java Class (JCL) trong tệp lưu trữ Java `(*.jar)` với JVM và JRE
+
+Ví dụ:
+- print() là phương thức trong java.io.PrintSteam
+- sqrt() là phương thức trong class Math
+
+```
+public class ViDuSqrtMethod {
+    public static void main(String[] args) {
+        System.out.print("Căn bậc 2 của 4 là: " + Math.sqrt(4));
+    }
+}
+```
+
+## Phương thức tự định nghĩa trong Java
+Có thể tự định nghĩa phương thức bên trong một class theo mong muốn của mình. Chúng được gọi là User-defined methods
+
+Ví dụ một phương thức tự định nghĩa:
+```
+public static void myMethod() {
+    System.out.println("Phương thức myMethod được gọi");
+}
+```
