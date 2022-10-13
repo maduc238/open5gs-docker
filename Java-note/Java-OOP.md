@@ -284,3 +284,91 @@ Khi chạy chương trình:
 ```
 Trong ví dụ trên có từ khóa `private`, chỉ định mức độ truy cập của constructor `NoArgConstructor`, làm cho nó chỉ có thể truy cập từ class của nó
 
+## Constructor mặc định trong Java
+
+Nếu không tự tạo constructor, trình biên dịch Java sẽ tự động tạo một constructor không có đối số trong runtime. Constructor này được gọi là **constructor mặc định**, nó sẽ khởi tạo bất kỳ biến thể hiện nào chưa được khởi tạo.
+
+```
+// Ví dụ constructor mặc định trong Java
+class ConstructorMacDinh {
+
+    // Khai báo biến, chưa khởi tạo giá trị ban đầu
+    int a;
+    boolean b;
+
+    public static void main(String[] args) {
+
+        ConstructorMacDinh obj = new ConstructorMacDinh();
+
+        System.out.println("a = " + obj.a);
+        System.out.println("b = " + obj.b);
+    }
+}
+```
+Khi chạy chương trình, kết quả nhận được là:
+```
+a = 0
+b = false
+```
+Chương trình trên tương đương với:
+```
+// Ví dụ constructor mặc định trong Java
+class ConstructorMacDinh {
+
+    // Khai báo biến, chưa khởi tạo giá trị ban đầu
+    int a;
+    boolean b;
+
+    private ConstructorMacDinh() {
+        a = 0;
+        b = false;
+    }
+
+    public static void main(String[] args) {
+
+        ConstructorMacDinh obj = new ConstructorMacDinh();
+
+        System.out.println("a = " + obj.a);
+        System.out.println("b = " + obj.b);
+    }
+}
+```
+
+## Constructor có đối số (có tham số)
+
+```
+// Cú pháp của constructor có đối số
+accessModifier ClassName(arg1, arg2, ..., argn) {
+    // constructor body
+}
+```
+Các tham số này được sử dựng để chấp nhận đối số khi khởi tạo đối tượng
+
+# Mức độ truy cập trong Java
+
+Có 4 mức độ truy cập trong Java:
+- `Private` chỉ hiển thị trong cùng class
+- `Default` chỉ hiển thị trong package (private package)
+- `Protected` chỉ hiển thị bên trong package hoặc tất cả các subclass
+- `Public` hiển thị mọi nơi
+
+# Từ khóa this
+
+Từ khóa `this` đề cập đến object hiện tại
+
+```
+// Ví dụ từ khóa this trong java
+class MyClass {
+    int bienTheHien;
+
+    MyClass(int bienTheHien){
+        this.bienTheHien = bienTheHien;
+        System.out.println("this tham chiếu đến = " + this);
+    }
+
+    public static void main(String[] args) {
+        MyClass obj = new MyClass(8);
+        System.out.println("Đối tượng tham chiếu = " + obj);
+    }
+}
+```
