@@ -372,3 +372,6 @@ class MyClass {
     }
 }
 ```
+
+# Phần tiếp theo ...
+https://github.com/maduc238/open5gs-docker/blob/main/Java-note/Java-OOP-2.md
