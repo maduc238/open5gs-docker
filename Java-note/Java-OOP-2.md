@@ -209,8 +209,160 @@ Ngoài ra còn các từ khóa protected sử dụng trong kế thừa như: `pu
 
 ## Phương thức Overriding
 
-Sử dụng phương thức này để định nghĩa cho class mẹ từ class con và ngược lại
+Sử dụng phương thức này để định nghĩa cho class mẹ từ class con
 
+Ví dụ về phương thức trong class con sẽ ghi đè phương thức trong class mẹ
+
+```
+// Ví dụ Overloading trong Java
+class DongVat {
+    protected String giong = "Động vật";
+ 
+    public void an() {
+        System.out.println("Đang ăn...");
+}
+ 
+    public void ngu() {
+        System.out.println("Đang ngủ...");
+    }
+}
+ 
+class Cho extends DongVat {
+ 
+    @Override
+    public void an() {
+        System.out.println("Đang ăn cơm...");
+    }
+ 
+    public void sua() {
+        System.out.println("Gâu gâu gâu");
+    }
+}
+ 
+class Main {
+    public static void main(String[] args) {
+ 
+        Cho cauVang = new Cho();
+        cauVang.an();
+        cauVang.ngu();
+        cauVang.sua();
+    }
+}
+```
+Tuy nhiên trong code trên sử dụng `@Override` để báo cho trình biên dịch rằng chúng ta ghi đè lên một phương thức. Nó không bắt buộc nhưng khuyến khích sử dụng để tăng khả năng đọc của chương trình
 
 # Java Instanceof
-https://niithanoi.edu.vn/lap-trinh-java.html#chuong-iv-phan-8-java-instanceof
+Từ khóa `instanceof` là một toán tử nhị phân. Nó được dùng để kiểm tra xem một một đối tượng có phải là một thể hiện của một class cụ thể hay không
+
+Cú pháp:
+```
+result = objectName instanceof className;
+```
+Trong đó:
+- `objectName` là tên đối tượng
+- `className` là tên class
+- `result` là kết quả trả về, `true` nếu đối tượng là thể hiện của class, `false` nếu ngược lại
+
+```
+// Ví dụ đơn giản toán tử instanceof
+class Main {
+    public static void main (String[] args) {
+        String ten = "NIITHANOI.EDU.VN";
+        Integer tuoi = 17;
+        ​
+        System.out.println("ten là thể hiện của String: "+ (ten instanceof String));
+        System.out.println("tuoi là thể hiện của Integer: "+ (tuoi instanceof Integer));
+    }
+}
+```
+Khi chạy chương trình, kết quả nhận được:
+```
+ten là thể hiện của String: true
+tuoi là thể hiện của Integer: true
+```
+
+## Sử dụng toán tử instanceof trong kế thừa
+Trong trường hợp kết thừa, `instanceof` được sử dụng để kiểm tra xem một đối tượng của lớp con có phải là thể hiện của lớp mẹ hay không
+
+```
+// Ví dụ sử dụng instanceof trong kế thừa
+class DongVat {
+}
+ 
+class Cho extends DongVat {
+}
+ 
+class Main {
+    public static void main(String[] args){
+        Cho cho = new Cho();
+ 
+        System.out.println("cho là thể hiện của Cho: "+ (cho instanceof Cho));
+        System.out.println("cho là thể hiện của DongVat: "+ (cho instanceof DongVat));
+    }
+}
+```
+Khi chạy chương trình:
+```
+cho là thể hiện của Cho: true
+cho là thể hiện của DongVat: true
+```
+
+## Class Object
+Tất cả các class được kế thừa từ class `Object`. Trong quá trình thực hiện, chúng ta không cần từ khóa `extends` như kế thừa trước đó vì đây là một ngoại lệ trong Java.
+
+Điều này do class `Object` là class root được định nghĩa trong package `java.lang`. Tất cả các class con của class `Object` tại thành một hệ thống phân cấp trong Java
+
+## Object Upcasting và Downcasting trong Java
+Một đối tượng của class con có thể được coi là một đối tượng của class mẹ. Điều này gọi là **upcasting**
+
+```
+// Ví dụ upcasting trong Java
+class DongVat {
+    public void hienThiThongTin() {
+        System.out.println("Tôi là động vật.");
+    }
+}
+
+class Cho extends DongVat {
+}
+
+class Main {
+    public static void main(String[] args) {
+        Cho cho = new Cho();
+        DongVat dv = cho;
+        dv.hienThiThongTin();
+    }
+}
+```
+Khi chạy chương trình:
+```
+Tôi là động vật.
+```
+**Downcasting** thì ngược lại, cú pháp phải thêm `instanceof`
+```
+// Ví dụ sửa lỗi Downcasting bằng instanceof
+class DongVat {
+}
+​
+class Meo extends DongVat {
+    public void hienThiThongTin() {
+        System.out.println("Tôi là một con mèo.");
+    }
+}
+​
+class Main {
+    public static void main(String[] args) {
+        Meo meo1 = new Meo();
+        DongVat dv = meo1;    // Upcasting
+        ​
+        if (dv instanceof Meo){
+            Meo meo2 = (Meo)dv;    // Downcasting
+            meo2.hienThiThongTin();
+        }
+    }
+}
+```
+Khi chạy chương trình:
+```
+Tôi là một con mèo.
+```
