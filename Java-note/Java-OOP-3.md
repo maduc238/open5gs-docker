@@ -148,3 +148,93 @@ HinhDaGiac.staticMethod();
 ```
 
 ## Phương thức mặc định trong interface
+Để khai báo phương thức mặc định bên trong các interface, chúng ta cần dùng từ khóa `default`
+```
+public default tinhChuVi(){
+    // Viết code như bình thường trong này
+}
+```
+Tại sao cần phương thức mặc định?
+
+Giả sử chúng ta thêm một phương thức mới trong interface một cách dễ dàng. Tuy nhiên nếu có nhiều class kế thừa interface này sẽ có rất nheiefu phương thức, sau đó phải theo dõi rất nhiều chỗ, lúc này sẽ dễ gặp lỗi.
+
+Để giải quyết việc này, sử dụng **phương thức mặc định** được kế thừa như các phương thức thông thường
+
+Ví dụ để hiểu rõ hơn về phương thức mặc định
+```
+interface  HinhDaGiac {
+    void tinhDienTich();
+    default void soCanh() {
+        System.out.println("Số cạnh của hình đa giác.");
+    }
+}
+ 
+class HinhChuNhat implements HinhDaGiac {
+    public void tinhDienTich() {
+        int chieuDai = 5;
+        int chieuRong = 6;
+        int dienTich = chieuDai * chieuRong;
+        System.out.println("Diện tích của hình chữ nhật là: " + dienTich);
+    }
+ 
+    public void soCanh() {
+        System.out.println("Hình có 4 cạnh");
+    }
+}
+ 
+class HinhVuong implements HinhDaGiac {
+    public void tinhDienTich() {
+        int doDaiCanh = 5;
+        int dienTich = doDaiCanh * doDaiCanh;
+        System.out.println("Diện tích của hình vuông là: " + dienTich);
+    }
+}
+ 
+class Main {
+    public static void main(String[] args) {
+        HinhChuNhat hcn = new HinhChuNhat();
+        hcn.tinhDienTich();
+        hcn.soCanh();
+ 
+        HinhVuong hv = new HinhVuong();
+        hv.tinhDienTich();
+    }
+}
+```
+Kết quả khi chạy chương trình:
+```
+Diện tích của hình chữ nhật là: 30
+Hình có 4 cạnh
+Diện tích của hình vuông là: 25
+```
+
+## Từ khóa extends trong interface
+Tương tự như class, interface có thể sử dụng từ khóa `extends` để kế thừa từ interface khác
+```
+interface DuongThang {
+    // Các trường
+    // Các phương thức
+}
+ 
+interface HinhDaGiac extends DuongThang {
+    // Kế thừa trường và phương thức của interface DuongThang
+    // Các trường, phương thức riêng khác
+}
+```
+Ngoài ra, một interface cũng có thể kế thừa nhiều interface khác nhau
+```
+interface A {
+    ...
+}
+
+interface B {
+    ...
+}
+
+Interface C extends A, B {
+    ...
+}
+```
+
+# Đa hình trong Java
+https://niithanoi.edu.vn/lap-trinh-java.html#chuong-v-phan-7-tinh-dong-goi-trong-java
