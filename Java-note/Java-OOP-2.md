@@ -251,6 +251,8 @@ class Main {
 ```
 Tuy nhiên trong code trên sử dụng `@Override` để báo cho trình biên dịch rằng chúng ta ghi đè lên một phương thức. Nó không bắt buộc nhưng khuyến khích sử dụng để tăng khả năng đọc của chương trình
 
+Chi tiết ghi đè phương thức sẽ được nói rõ hơn trong phần sau
+
 # Java Instanceof
 Từ khóa `instanceof` là một toán tử nhị phân. Nó được dùng để kiểm tra xem một một đối tượng có phải là một thể hiện của một class cụ thể hay không
 
@@ -307,6 +309,8 @@ cho là thể hiện của Cho: true
 cho là thể hiện của DongVat: true
 ```
 
+Ngoài ra `instanceof` còn được sử dụng cho Interface
+
 ## Class Object
 Tất cả các class được kế thừa từ class `Object`. Trong quá trình thực hiện, chúng ta không cần từ khóa `extends` như kế thừa trước đó vì đây là một ngoại lệ trong Java.
 
@@ -343,18 +347,18 @@ Tôi là động vật.
 // Ví dụ sửa lỗi Downcasting bằng instanceof
 class DongVat {
 }
-​
+
 class Meo extends DongVat {
     public void hienThiThongTin() {
         System.out.println("Tôi là một con mèo.");
     }
 }
-​
+
 class Main {
     public static void main(String[] args) {
         Meo meo1 = new Meo();
         DongVat dv = meo1;    // Upcasting
-        ​
+        
         if (dv instanceof Meo){
             Meo meo2 = (Meo)dv;    // Downcasting
             meo2.hienThiThongTin();
@@ -366,3 +370,142 @@ Khi chạy chương trình:
 ```
 Tôi là một con mèo.
 ```
+
+# Ghi đè phương thức
+## Quy tắc ghi đè phương thức
+Phải tuân theo 3 quy tắc sau:
+- Cả class mẹ và class con phải có cùng tên phương thức (method), cùng một kiểu trả về và cùng danh sách tham số (args)
+- Không thể ghi đè phương thức `static` và `final`
+- Phải luôn ghi đè lên phương thức trưu tượng của class mẹ (sẽ được học trong phương thức trừu tượng)
+
+## Sử dụng từ khóa super trong ghi đè phương thức
+Cách này được sử dụng để truy cập phương thức đã bị ghi đè
+```
+// Gọi phương thức đã bị ghi đè
+class DongVat {
+    public void hienThiThongTin() {
+        System.out.println("Tôi là Động vật");
+    }
+}
+ 
+class Cho extends DongVat {
+    @override
+    public void hienThiThongTin() {
+        super.hienThiThongTin();
+        System.out.println("Tôi là một chú chó");
+    }
+}
+ 
+class Main {
+    public static void main(String[] args) {
+        Cho cauVang = new Cho();
+        cauVang.hienThiThongTin();
+    }
+}
+```
+Kết quả hiển thị:
+```
+Tôi là Động vật
+Tôi là một chú chó
+```
+Tại dây `super` được sử dụng để gọi lại phương thức `hienThiThongTin()` trước đó
+
+Lưu ý:
+- Constructor trong Java không được kế thừa. Do đó không thể ghi đè constructor
+- Có thể gọi constructor của class mẹ từ class con bằng super()
+
+Chi tiết từ khóa **super** sẽ nói rõ hơn trong phần sau
+
+## Chỉ định mức độ truy cập trong ghi đè phương thức
+Đối với phương thức trong class con, chúng ta chỉ có thể sử dụng mức độ truy cập có phạm vi lớn hơn của phương thức trong class mẹ.
+
+Ví dụ,
+
+Giả sử, một phương pháp `hienThiThongTin()` trong class mẹ được khai báo là `protected`.
+
+Sau đó, các phương thức tương tự `hienThiThongTin()` trong class con có thể là `public` hay `protected` (Không thể là `private`)
+
+Lưu ý rằng, phương thức `hienThiThongTin()` trong class con có mức độ truy cập là `public` lớn hơn mức độ truy cập `protected` của phương thức `hienThiThongTin()` trong class con.
+
+# Từ khóa super trong Java
+Từ khóa **super** trong Java được sử dụng trong các class con để truy cập các thành viên của superclass (thuộc tính, constructor và phương thức).
+
+Có 3 trường hợp sử dụng từ khóa super:
+- Để gọi các phương thức của class cha được ghi đè trong class con.
+- Để truy cập các thuộc tính (trường) của class mẹ nếu cả class mẹ và class con có các thuộc tính trùng tên.
+- Để gọi một cách rõ ràng constructor không đối số (theo mặc định) hoặc có đối số từ constructor của class con.
+
+Ví dụ sử dụng từ khóa super để truy cập phương thức bị ghi đè của class mje đã nói ở phần trên. Phần dưới đây sẽ nói chi tiết cho các trường hợp còn lại
+
+## Sử dụng từ khóa super để truy cập thuộc tính của class mẹ
+```
+class DongVat {
+    protected String giong ="Động vật";
+}
+ 
+class Cho extends DongVat {
+    public String giong = "Chó cỏ";
+ 
+    public void inGiongCho() {
+        System.out.println("Tôi là " + giong);
+        System.out.println("Tôi là " + super.giong);
+    }
+}
+ 
+class Main {
+    public static void main(String[] args) {
+        Cho cauVang = new Cho();
+        cauVang.inGiongCho();
+    }
+}
+```
+Kết quả nhân được:
+```
+Tôi là Chó cỏ
+Tôi là Động vật
+```
+
+Trong ví dụ này, super giúp truy cập thuộc tính `giong` của class mẹ
+
+## Sử dụng từ khóa super truy cập constructor của class mẹ
+```
+class DongVat {
+ 
+    // Constructor mặc định không đối số
+    DongVat() {
+        System.out.println("Tôi là Động vật");
+    }
+ 
+    // Constructor có đối số
+    DongVat(String giong) {
+        System.out.println("Giống: " + giong);
+    }
+}
+ 
+class Cho extends DongVat {
+ 
+    // Constructor mặc định
+    Dog() {
+ 
+        // Gọi constructor có đối số
+        // của class cha
+        super("Chó");
+ 
+        System.out.println("Tôi là một chú chó");
+    }
+}
+ 
+class Main {
+    public static void main(String[] args) {
+        Cho cauVang = new Cho();
+    }
+}
+```
+Kết quả thu được:
+```
+Giống: Chó
+Tôi là một chú chó
+```
+
+# Phần tiếp theo ...
+https://github.com/maduc238/open5gs-docker/blob/main/Java-note/Java-OOP-3.md
