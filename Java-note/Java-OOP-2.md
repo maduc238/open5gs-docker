@@ -165,5 +165,52 @@ Vietnam, Hanoi
 Vietnam, HCM
 ```
 
+# Kế thừa trong Java
+## Từ khóa extends
+Ví dụ về kế thừa trong Java. Sử dụng `extends` để kế thừa class mẹ
+
+```
+class DongVat {
+ 
+    public void an() {
+        System.out.println("Đang ăn...");
+    }
+ 
+    public void ngu() {
+        System.out.println("Đang ngủ...");
+    }
+}
+ 
+class Cho extends DongVat {
+    public void sua() {
+        System.out.println("Gâu gâu gâu");
+    }
+}
+ 
+class Main {
+    public static void main(String[] args) {
+ 
+        Cho cauVang = new Cho();
+ 
+        cauVang.an();
+        cauVang.ngu();
+ 
+        cauVang.sua();
+    }
+}
+```
+Khi chạy chương trình, kết quả nhận được:
+```
+Đang ăn...
+Đang ngủ...
+Gâu gâu gâu
+```
+Ngoài ra còn các từ khóa protected sử dụng trong kế thừa như: `public`, `private`, `protected` dùng cho các phương thức
+
+## Phương thức Overriding
+
+Sử dụng phương thức này để định nghĩa cho class mẹ từ class con và ngược lại
+
+
 # Java Instanceof
 https://niithanoi.edu.vn/lap-trinh-java.html#chuong-iv-phan-8-java-instanceof
