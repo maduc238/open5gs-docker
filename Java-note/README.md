@@ -6,6 +6,12 @@ Hướng dẫn lập trình spring: https://openplanning.net/10127/huong-dan-lap
 
 Các course học Java: https://loda.me/courses
 
+(Các note dưới đây sẽ không chú trọng những phần giống C/C++)
+
+# Java Basic
+
+- [Phần 1](https://haha.com)
+
 # Lập trình hướng đối tượng Java
 
 - [Phần 1](https://github.com/maduc238/open5gs-docker/blob/main/Java-note/Java-OOP.md)
