@@ -8,6 +8,10 @@ Repositorie này chứa các phần:
 
 [Video thực hiện](https://www.youtube.com/watch?v=6pnh7TqTU6c)
 
+## Contributors:
+- [Ma Viet Duc](https://github.com/maduc238)
+- [Pham Thanh Hai](https://github.com/ahihi8z8z)
+
 ### Mục lục
 
 [1. Tạo gateway giao tiếp](#nung)
@@ -179,7 +183,3 @@ Các máy container: dùng tcpdump bắt các gói trong interface loopback
 ```
 tcpdump -i lo -s 65535 -w loopback.pcap
 ```
-
-## Contributors:
-- Ma Viet Duc
-- Pham Thanh Hai
