@@ -236,5 +236,94 @@ Interface C extends A, B {
 }
 ```
 
-# Đa hình trong Java
-https://niithanoi.edu.vn/lap-trinh-java.html#chuong-v-phan-7-tinh-dong-goi-trong-java
+# Nested class và Inner class
+Phần này sẽ nói tới class lồng nhau và class bên trong thông qua các ví dụ
+
+Có thể định nghĩa một class bên trong một class khác, như vậy được gọi là **Nested class**
+
+```
+class OuterClass {
+    ...
+    class NestedClass {
+        ...
+ 
+    }
+}
+```
+
+## Non-Static Nested Class
+Là một class bên trong mộtt class khác, trong đó class có quyền truy cập vào các thành viên của class bên ngoài. Nó thường được gọi là **inner class** (class bên trong)
+
+```
+class LapTop {
+    double gia;
+    class CPU{
+        String nhaSanXuat;
+        String loaiChip;
+        int getTheHeCPU(){
+            return 10;
+        }
+    }
+    protected class RAM{
+        String nhaSanXuat;
+        String loaiRAM;
+        int getBoNhoRAM(){
+            return 16;
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        LapTop hp = new LapTop();
+        LapTop.CPU cpu = hp.new CPU();
+        LapTop.RAM ram = hp.new RAM();
+        System.out.println("CPU thế hệ: " + cpu.getTheHeCPU() + "TH");
+        System.out.println("Bộ nhớ RAM: " + ram.getBoNhoRAM() + "GB");
+    }
+}
+```
+Kết quả nhận được:
+```
+CPU thế thệ: 10TH
+Bộ nhớ RAM: 16GB
+```
+Truy cập phần từ đều nhờ toán tử `dot` như: `LapTop.CPU cpu = hp.new CPU();`
+
+Còn việc truy cập phần tử class bên ngoài từ class bên trong: Sử dụng `this`
+```
+Oto.this.loaiXe.equals("N20")
+```
+
+## Static inner class
+Có thể định nghĩa một class static bên trong class khác. Như vậy được gọi là **static nested class**
+
+Không giống như inner class, static nested class không thể truy cập các biến thành viên của lớp bên ngoài. Do đó, nó không có tham chiếu nào về class bên ngoài tồn tại như là `OuterClass.this`. Vì vậy có thể tạo đối tượng của static nested class trực tiếp như thế này:
+```
+OuterClass.InnerClass obj = new OuterClass.InnerClass();
+```
+Ví dụ:
+```
+class LapTop {
+    String model;
+    public LapTop(String model) {
+        this.model = model;
+    }
+    static class USB{
+        int usb3 = 2;
+        int usbC = 1;
+        int getSoCongUSB(){
+            return usb3 + usbC;
+        }
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        LapTop.USB usb = new LapTop.USB();
+        System.out.println("Tổng số cổng USB: " + usb.getSoCongUSB());
+    }
+}
+```
+
+# Nested Static class
+
+Tìm hiểu thêm tại [đây](https://niithanoi.edu.vn/lap-trinh-java.html#chuong-vi-phan-2-nested-static-class-trong-java)
