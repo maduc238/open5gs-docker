@@ -10,7 +10,7 @@ Các course học Java: https://loda.me/courses
 
 # Java Basic
 
-- [Phần 1](https://haha.com)
+- [Phần 1](https://github.com/maduc238/open5gs-docker/blob/main/Java-note/Java.md)
 
 # Lập trình hướng đối tượng Java
 
