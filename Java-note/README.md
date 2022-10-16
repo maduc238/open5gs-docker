@@ -8,6 +8,8 @@ Các course học Java: https://loda.me/courses
 
 (Các note dưới đây sẽ không chú trọng những phần giống C/C++)
 
+(Code Java thực hiện dưới đây là JDK-19 + Spring Boot 2.7.4)
+
 # Java Basic
 
 - [Phần 1](https://github.com/maduc238/open5gs-docker/blob/main/Java-note/Java.md)
