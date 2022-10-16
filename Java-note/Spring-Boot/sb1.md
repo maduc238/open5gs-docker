@@ -32,7 +32,7 @@ public class App {
 
 Spring đặt tên cho ***container*** là `ApplicationContext` và đặt tên cho các ***dependency*** là `Bean`
 
-# Component
+# @Component
 
 Là một Annotation đánh dấu trên các `Class` để giúp Spring biết nó là một `Bean`
 
@@ -77,7 +77,7 @@ Instance: temp.demo.Bikini@6b5176f2
 Mac bikini
 ```
 
-@ Autowired
+# @Autowired
 Giờ tạo một Class `Girl` và có thuộc tính là `Outfit`
 ```
 package temp.demo;
