@@ -14,7 +14,7 @@ Trong Java truyền thống, khi chạy cả một project chúng ta phải đ�
 
 Cách thực hiện là thêm annotation `@SpringBootApplication` trên class chính và gọi `SpringApplication.run(App.class, args);` để chạy project - Đây chính là lệnh để tạo ***container*** sau đó tìm toàn bộ các ***dependency*** trong project của bạn và đưa vào đó
 
-Tại đây phần chính sẽ tạo trên file `App.java`
+Tại đây phần chính sẽ tạo trên file `App.java`. **Lưu ý: `package temp.demo;` tùy thuộc vào việc khai báo `Group Id`,... trên VS Code**
 
 ```
 package temp.demo;
