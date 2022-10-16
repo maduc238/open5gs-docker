@@ -20,4 +20,6 @@ Các course học Java: https://loda.me/courses
 
 # Spring Framework
 
-Hướng dẫn cài spring trên windows: https://blogchiasekienthuc.com/lap-trinh/cach-cai-spring-boot-cli.html
+Hướng dẫn cài spring trên
+- windows: https://blogchiasekienthuc.com/lap-trinh/cach-cai-spring-boot-cli.html
+- ubuntu: https://huongdanjava.com/vi/cai-dat-spring-boot-command-line-interface-tren-ubuntu.html
