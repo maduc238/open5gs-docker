@@ -8,31 +8,37 @@ Hướng dẫn cài GMLC: https://github.com/RestComm/gmlc/blob/master/docs/inst
 Hướng dẫn chạy GMLC: https://github.com/RestComm/gmlc/blob/master/docs/adminguide/sources-asciidoc/src/main/asciidoc/GMLC_Admin_Guide.adoc
 
 # Dependencies
-
+Cài **JDK**
 ```
 sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt update
 apt search openjdk
-...
+```
+Chọn bản **JDK** phù hợp, ở đây chọn bản 17
+```
 sudo apt install openjdk-17-jdk
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 export PATH=$PATH:$JAVA_HOME/bin
 java -version
-
---------------------
-
+```
+Cài **maven**
+```
 wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
 tar xzvf apache-maven-3.8.6-bin.tar.gz
 sudo nano ~/.bashrc
 -> export PATH=/home/.../bin:$PATH
 source ~/.bashrc
 mvn -version
-
---------------------
-
+```
+Cài và chạy **jDiameter**
+```
 git clone https://github.com/RestComm/jdiameter.git
 cd jdiameter
 mvn clean install
 ```
 
-https://www.h21lab.com/tools/jdiameter
+# Chạy jDiameter
+
+Nếu `[INFO] BUILD SUCCESS`, sửa 2 file `ExampleClient.java` và `ExampleServer.java` trong jdiameter/examples/guide1
+
+Chạy và bật wireshark để xem kết quả
