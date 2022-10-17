@@ -90,7 +90,7 @@ Payload của bản tin được dựng từ các AVP. Mỗi AVP có một dạn
 
 Ứng dụng Diameter core được dựng dựa trên 3 thành phần cơ bản:
 
-***Stack*** Các Diameter Stack mở rộng, cung cấp hỗ trợ phiên cơ bản cùng với các phiên ứng dụng cụ thể
+[***Stack***](https://github.com/maduc238/open5gs-docker/blob/main/jDiameter/guide_2_stack.md) Các Diameter Stack mở rộng, cung cấp hỗ trợ phiên cơ bản cùng với các phiên ứng dụng cụ thể
 
 ***Multiplexer (MUX)*** Diameter Stack multiplexer. Cho phép những listener khác nhau chia sẻ cùng một phiên bản stack
 
