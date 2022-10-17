@@ -17,7 +17,7 @@ Diameter cung cấp tất cả các khả năng của giao thức RADIUS và tư
 
 Mỗi ứng dụng giới thiệu các loại bản tin, mã AVP và state machines. Mỗi ứng dụng có một Application ID và Vendor ID riêng được sử dụng để phân biệt giữa các ứng dụng. Application code được dùng để báo hiệu cho các peers khác biết operation nào được hỗ trợ bởi connecting peer (Capabilities Exchange / Negotiation)
 
-# Cấu trúc bản tin
+# Cấu trúc bản tin Diameter
 
 Mỗi bản tin có cấu trúc cố định, gồm 2 phần: header và payload
 
@@ -85,3 +85,13 @@ Payload của bản tin được dựng từ các AVP. Mỗi AVP có một dạn
 **AVP Length** Cho biết số octet trong AVP bao gồm các thông tin: AVP Code, AVP Length, AVP Flags, Vendor-ID field (nếu xuất hiện), AVP Data
 
 **Vendor-ID** Một optional octet xác định AVP trong không gian ứng dụng. AVP code và AVP Vendor-ID tạo ra một số định dạng duy nhất cho AVP
+
+# Contents
+
+Ứng dụng Diameter core được dựng dựa trên 3 thành phần cơ bản:
+
+***Stack*** Các Diameter Stack mở rộng, cung cấp hỗ trợ phiên cơ bản cùng với các phiên ứng dụng cụ thể
+
+***Multiplexer (MUX)*** Diameter Stack multiplexer. Cho phép những listener khác nhau chia sẻ cùng một phiên bản stack
+
+***Dictionary*** Diameter Message and AVP Dictionary. Cung cấp một API để truy cập thông tin về các AVP. Dictionary được nhúng vào trong MUX
