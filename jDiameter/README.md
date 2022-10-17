@@ -26,7 +26,13 @@ Cài **maven**
 wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
 tar xzvf apache-maven-3.8.6-bin.tar.gz
 sudo nano ~/.bashrc
--> export PATH=/home/.../bin:$PATH
+```
+Thêm dòng lệnh này vào cuối file. Phần `...` là đường dẫn tới `bin` của **maven**
+```
+export PATH=/home/.../bin:$PATH
+```
+Chạy lại và kiểm tra
+```
 source ~/.bashrc
 mvn -version
 ```
