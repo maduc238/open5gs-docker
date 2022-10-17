@@ -45,6 +45,6 @@ mvn clean install
 
 # Chạy jDiameter
 
-Nếu `[INFO] BUILD SUCCESS`, sửa 2 file `ExampleClient.java` và `ExampleServer.java` trong jdiameter/examples/guide1
+Nếu `[INFO] BUILD SUCCESS`, sửa 2 file [`ExampleClient.java`](https://github.com/maduc238/open5gs-docker/blob/main/jDiameter/ExampleClient.java) và [`ExampleServer.java`](https://github.com/maduc238/open5gs-docker/blob/main/jDiameter/ExampleServer.java) trong jdiameter/examples/guide1
 
 Chạy và bật wireshark để xem kết quả
