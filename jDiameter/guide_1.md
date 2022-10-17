@@ -24,9 +24,23 @@ Mỗi bản tin có cấu trúc cố định, gồm 2 phần: header và payload
 Cấu trúc header là dạng phổ biến cho mỗi bản tin. Độ dài, nội dung là cố định. Nội dung header thông báo bao gồm code, application và certain bit flags, nó sẽ giúp để nhận diện bản tin trong Diameter scope
 
 Cấu trúc payload được dựng bởi các AVP. Nội dung của chúng khác nhau đối với từng lệnh và ứng dụng, mặc dùng tất cả chúng đều xác định AVP Session-ID là bắt buộc
-
-<Hình vẽ cấu trúc bản tin Diameter>
-
+```
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    Version    |                 Message Length                |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   | command flags |                  Command-Code                 |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                         Application-ID                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                      Hop-by-Hop Identifier                    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                      End-to-End Identifier                    |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |  AVPs ...
+   +-+-+-+-+-+-+-+-+-+-+-+-+-
+```
 **Version** Cho biết phiên bản của Diameter. Giá trị này luôn được đặt thành `1`
 
 **Message Length** Độ dài bản tin Diameter, bao gồm các trường header
@@ -47,7 +61,19 @@ Cấu trúc payload được dựng bởi các AVP. Nội dung của chúng khá
 **End-to-End ID** ID duy nhất có giới hạn thời gian được sử dụng để phát hiện các bản tin trùng lặp. ID phải là duy nhất trong ít nhất 4 phút. Người khởi tạo bản tin này phải đảm bảo rằng header này chứa cùng một giá trị có trong yêu cầu tương ứng
 
 Payload của bản tin được dựng từ các AVP. Mỗi AVP có một dạng cấu trúc giống nhau như: một header, và encoded data. Data có thể đơn giản (như là integer, long) hoặc phức tạp (một số encoded AVP)
-
+```
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                           AVP Code                            |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |V M P r r r r r|                  AVP Length                   |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |                        Vendor-ID (opt)                        |
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |    Data ...
+   +-+-+-+-+-+-+-+-+
+```
 **AVP Code** Mã định danh duy nhất cho AVP. Số AVP từ 1 đến 255 được dành riêng cho khả năng tương thích ngược với RADIUS và không yêu cầu header ID nhà cung cấp. AVP số 256 trở lên được sử dụng riêng cho Diameter và được cấp phát bởi IANA
 
 **Flags** Cờ bit chỉ định cách xử lý từng thuộc tính. Các cờ octet có cấu trúc: V M P r r r r r. Mô tả đầy đủ có sẵn trong [Section 4.1 của RFC3588](https://www.rfc-editor.org/rfc/rfc3588#section-4.1). 3 bit đầu có nghĩa:
