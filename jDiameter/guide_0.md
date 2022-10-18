@@ -63,9 +63,6 @@ Nó sẽ tạo 2 folder
 - charging-server-simulator-perf-config
 - charging-server-simulator-perf-test
 ```
-sudo apt install maven
-```
-```
 cd charging-server-simulator-perf-test
 mvn clean install -Prelease
 ```
