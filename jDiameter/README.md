@@ -47,4 +47,7 @@ mvn clean install
 
 Nếu `[INFO] BUILD SUCCESS`, sửa 2 file [`ExampleClient.java`](https://github.com/maduc238/open5gs-docker/blob/main/jDiameter/ExampleClient.java) và [`ExampleServer.java`](https://github.com/maduc238/open5gs-docker/blob/main/jDiameter/ExampleServer.java) trong jdiameter/examples/guide1
 
+```
+~/jdiameter/examples/guide1$ mvn exec:java -Dexec.mainClass="org.example.server.ExampleServer"
+```
 Chạy và bật wireshark trên `lo` để xem kết quả
