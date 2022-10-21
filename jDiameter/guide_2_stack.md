@@ -33,4 +33,94 @@ General pattern để khai báo interface:
 
 ## Mô hình Diameter Stack
 Diameter Stack thực hiện các tác vụ sau:
-- Quản lý kết nối với 
+- Quản lý kết nối với các remote peer
+- Quản lý session object
+- Định tuyến bản tin trên hành động của session
+- Nhận và quản lý gửi bản tin đến listener được chỉ định (thường là đối tượng session)
+
+# Diameter Stack Configuration
+
+Stack được cấu hình bằng file XML. Cấu trúc cấp cao nhất của tệp:
+```
+<Configuration xmlns="http://www.jdiameter.org/jdiameter-server">
+
+	<LocalPeer></LocalPeer>
+	<Parameters></Parameters>
+	<Network></Network>
+	<Extensions></Extensions>
+
+</Configuration>
+```
+Cụ thể chi tiết phần `<LocalPeer>`: chứa các tham số ảnh hưởng đến local Diameter peer. Các phần tử và thuộc tính có sẵn được liệt kê bên dưới ví dụ: 
+```
+<LocalPeer>
+	<URI value="aaa://localhost:3868"/>
+	<IPAddresses>
+		<IPAddress value="127.0.0.1"/>
+	</IPAddresses>
+
+	<Realm value="mobicents.org"/>
+	<VendorID value="193"/>
+	<ProductName value="jDiameter"/>
+	<FirmwareRevision value="1"/>
+
+	<OverloadMonitor>
+		<Entry index="1" lowThreshold="0.5" highThreshold="0.6">
+			<ApplicationID>
+				<VendorId value="193"/>
+				<AuthApplId value="0"/>
+				<AcctApplId value="19302"/>
+			</ApplicationID>
+		</Entry>
+	</OverloadMonitor>
+	<Applications>
+		<ApplicationID>
+			<VendorId value="193"/>
+			<AuthApplId value="0"/>
+			<AcctApplId value="19302"/>
+		</ApplicationID>
+	</Applications>
+</LocalPeer>
+```
+- <***URI***> chỉ định local peer. URI có định dạng `aaa://FQDN:port` (Fully qualified domain name)
+- <***IPAddresses***> chứa một hoặc nhiều phần tử <IPAddress>: trong đó chứa một địa chỉ IP hợp lệ, duy nhất cho local peer được lưu trữ trong thuộc tính `value`
+- <***Realm***> chỉ định realm của local peer
+- <***VendorID***> chỉ định ID của vendor tương ứng do IANA phát hành
+- <***ProductName***> tên product của local peer
+- <***FirmwareRevision***> phiên bản của bản tin, thường là `1`
+- <***OverloadMonitor***>, <***Entry***> ...
+- ...
+  
+```
+<Parameters>
+
+	<AcceptUndefinedPeer value="true"/>
+	<DuplicateProtection value="true"/>
+  <DuplicateTimer value="240000"/>
+  <DuplicateSize value="5000"/>
+	<UseUriAsFqdn value="true"/> <!-- Needed for Ericsson SDK Emulator -->
+	<QueueSize value="10000"/>
+	<MessageTimeOut value="60000"/>
+	<StopTimeOut value="10000"/>
+	<CeaTimeOut value="10000"/>
+	<IacTimeOut value="30000"/>
+	<DwaTimeOut value="10000"/>
+	<DpaTimeOut value="5000"/>
+	<RecTimeOut value="10000"/>
+
+	<!-- Peer FSM Thread Count Configuration -->
+	<PeerFSMThreadCount value="3" />
+
+	<Concurrent>
+		<Entity name="ThreadGroup" size="64"/>
+		<Entity name="ProcessingMessageTimer" size="1"/>
+		<Entity name="DuplicationMessageTimer" size="1"/>
+		<Entity name="RedirectMessageTimer" size="1"/>
+		<Entity name="PeerOverloadTimer" size="1"/>
+		<Entity name="ConnectionTimer" size="1"/>
+		<Entity name="StatisticTimer" size="1"/>
+		<Entity name="ApplicationSession" size="16"/>
+	</Concurrent>
+
+</Parameters>
+```
