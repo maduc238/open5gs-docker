@@ -54,6 +54,6 @@ mvn install -f "pom.xml" -Dcheckstyle.skip
 
 Ném file `example1-1.7.0-SNAPSHOT-jar-with-dependencies.jar` vào đường dẫn `.../target/`
 ```
-java -classpath /home/maduc/jdiameter/examples/guide1/target/example1-1.7.0-SNAPSHOT-jar-with-dependencies.jar org.example.server.ExampleServer
+java -classpath target/example1-1.7.0-SNAPSHOT-jar-with-dependencies.jar org.example.server.ExampleServer
 ```
 Chạy và bật wireshark trên `lo` để xem kết quả
