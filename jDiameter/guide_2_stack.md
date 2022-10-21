@@ -91,6 +91,7 @@ Cụ thể chi tiết phần `<LocalPeer>`: chứa các tham số ảnh hưởng
 - <***OverloadMonitor***>, <***Entry***> ...
 - ...
   
+Các phần tử <Parameter> chỉ định các tham số cho Diameter Stack:
 ```
 <Parameters>
 
@@ -124,3 +125,44 @@ Cụ thể chi tiết phần `<LocalPeer>`: chứa các tham số ảnh hưởng
 
 </Parameters>
 ```
+- <***AcceptUndefinedPeer***> chỉ định liệu stack có chấp nhận các kết nối từ peer không xác định hay không
+- <***DuplicateProtection***> chỉ định có bật tính năng bảo vệ tin trùng lặp hay không
+- <***DuplicateTimer***> giá trị thời gian mỗi tin nhắn trùng lặp
+- <***DuplicateSize***> số lượng request được lưu trữ để bảo vệ chống trùng lặp
+- <***UseUriAsFqdn***> xem URI có được sử dụng làm FQDN hay không. Nếu là `true`, stack sẽ đợi máy đích ở định dạng `aaa://isdn.domain.com:3868` thay vì dạng thông thường `isdn.domain.com`
+- <***QueueSize***> số lượng hàng đợi chứa các sự kiện và bản tin FSM
+- <***MessageTimeOut***> timeout cho các bản tin không phải là bản tin protocol FSM. Tính bằng mili giây
+- <***StopTimeOut***> khoảng thời gian stack chờ tất cả các tài nguyên dừng lại. Tính bằng mili giây
+- ...
+- <***PeerFSMThreadCount***> số thread để xử lý các sự kiện trong FSM peer
+
+<Network> chứa các phần tử chỉ định các tham số cho peer bên ngoài:
+```
+<Network>
+	
+	<Peers>
+		<!-- This peer is a server, if it's a client attempt_connect should be set to false -->
+		<Peer name="aaa://127.0.0.1:3868" attempt_connect="true" rating="1"/>
+	</Peers>
+
+	<Realms>
+		<Realm name="mobicents.org" peers="127.0.0.1" local_action="LOCAL" dynamic="false" exp_time="1">
+			<ApplicationID>
+				<VendorId value="193"/>
+				<AuthApplId value="0"/>
+				<AcctApplId value="19302"/>
+			</ApplicationID>
+		</Realm>
+	</Realms>
+
+</Network>
+```
+- <***Peers***> chứa các phần tử con <Peer>, chỉ định các peer bên ngoài và cách kết nối với chúng. <Peer> chỉ định tên của các peer đó, liệu chúng được coi là client hay server và rating của chúng
+	+ name: Tên của peer ở dạng URI: `aaa://192.168.1.1:3868`
+	+ attempt_connect: Xác định xem stack có cố gắng kết nối tới peer này hay không
+	+ rating: Chỉ định hạng của peer này để đạt được ưu tiên / sắp xếp peer
+- <***Realms***> chứa các phần tử <Realm> con, chỉ định tất cả các realm kết nối vào mạng Diameter. <Realm> chứa các thuộc tính và phần tử mô tả các cấu hình realm khác nhau cho Core. Nó hỗ trợ phần tử con <ApplicationID>, xác định các ứng dụng được hỗ trợ
+	+ peers: Dánh sách các peer được phân tách bằng dấu phẩy. Mỗi peer được đại diện bởi một địa chỉ IP hoặc FQDN
+	+ local_action: Hành động mà Local Peer này sẽ thực hiện trên realm được chỉ định
+	+ dynamic: chỉ định realm này là dynamic. Có nghĩa là những peer ngang hàng kết nối với những peer có tên realm này sẽ được thêm vào danh sách ngang hàng của realm nếu chưa có mặt
+	+ exp_time: Thời gian trước khi gửi một peer thuộc về realm này, nếu không sẽ bị ngắt kết nối
