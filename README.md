@@ -1,4 +1,6 @@
 # Open5GS bằng Docker
+![Ubuntu package](https://img.shields.io/ubuntu/v/:v18.04.1-0ubuntu1)
+![YouTube Video Likes](https://img.shields.io/youtube/likes/6pnh7TqTU6c?style=social)
 
 Repositorie này chứa các phần:
 - :heart_eyes: Chạy Open5gs với phần user plane, control plane, kết hợp eNB, UE bằng srsRAN
