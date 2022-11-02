@@ -25,5 +25,6 @@ Cũng trong `Girl`:
 ```
 
 ## Bean Life Cycle
+Vòng đời của Bean được biểu diễn như ảnh dưới:
 
-![f9b4e79f-24e8-40e6-918e-f66e4fa5ee0a](https://user-images.githubusercontent.com/95759699/199367687-108f2658-57a2-4877-b370-65d983c2ae5b.jpg)
+<img src="images/BeanLifeCycle.jpg">
