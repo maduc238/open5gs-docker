@@ -5,7 +5,7 @@ Class là một bản kế hoạch chi tiết cho đối tượng
 
 ## Cách định nghĩa class trong Java
 
-```
+```java
 class TenClass{
     // Biến
     // Phương thức
@@ -14,7 +14,7 @@ class TenClass{
 
 Còn đây là một ví dụ về class mô tả về đèn
 
-```
+```java
 class Den{
     private String denSang;
 
@@ -41,7 +41,7 @@ Lưu ý: Có từ khóa `private` và `public`. Đây chỉ tới mức độ tr
 
 Khi class được định nghĩa, chỉ có đặc tả của đối tượng được xác định. Bộ nhớ chưa được phân bổ. -> Để truy cập bộ nhớ các thành viên bên trong class, cần tạo các đối tượng
 
-```
+```java
 Den den1 = new Den();
 Den den2 = new Den();
 ```
@@ -50,13 +50,13 @@ Den den2 = new Den();
 
 Ví dụ để truy cập phương thức `batDen()` trong class `Den`:
 
-```
+```java
 den1.batDen();
 ```
 
 ## Ví dụ về Class và Object trong Java
 
-```
+```java
 class Den {
     
     // Biến thể hiện (instance variable)
@@ -124,7 +124,7 @@ Ví dụ:
 - print() là phương thức trong java.io.PrintSteam
 - sqrt() là phương thức trong class Math
 
-```
+```java
 public class ViDuSqrtMethod {
     public static void main(String[] args) {
         System.out.print("Căn bậc 2 của 4 là: " + Math.sqrt(4));
@@ -136,7 +136,7 @@ public class ViDuSqrtMethod {
 Có thể tự định nghĩa phương thức bên trong một class theo mong muốn của mình. Chúng được gọi là User-defined methods
 
 Ví dụ một phương thức tự định nghĩa:
-```
+```java
 public static void myMethod() {
     System.out.println("Phương thức myMethod được gọi");
 }
@@ -148,8 +148,7 @@ Có thể thấy:
 - Từ khóa `void` biểu thị phương thức này không trả về bất kỳ giá trị nào
 
 Cú pháp đầy đủ để định nghĩa một phương thức trong Java là:
-```
-
+```java
 modifier static returnType nameOfMethod (Parameter List) {
     // method body
 }
@@ -164,11 +163,11 @@ Trong đó:
 - **Method body** xác định phương thức sẽ làm gì, cách các tham số được thao tác với các câu lệnh lập trình và giá trị nào được trả về
 
 Khi phương thức được đặt `static` thì có thể gọi trực tiếp:
-```
+```java
 myMethod();
 ```
 Còn khi không gọi `static`, chúng ta phải gọi thông qua đối tượng. Giả sử dưới đây đã tạo đối tượng `den` của Class `Den`:
-```
+```java
 den.myMethod();
 ```
 - Đầu tiên, trình điều khiển chương trình bắt đầu trong hàm main (không quan tâm main được đặt tại vị trí nào trong file code)
@@ -177,7 +176,7 @@ den.myMethod();
 
 ## Ví dụ phương thức trong Java
 
-```
+```java
 // Ví dụ phương thức trong Java
 class Main {
 
@@ -207,7 +206,7 @@ Một constructor là hàm tạo, tương tự như một phương thức nhưng
 
 Trình biên dịch Java phân biệt giữa một phương thức và một hàm tạo theo tên và kiểu trả về của nó. Moto hàm tạo phải có **cùng tên** với class và không phải trả về bất kỳ giá trị nào
 
-```
+```java
 class ViDuConstructor {
     ViDuConstructor() {
         // Phần thân constructor
@@ -219,7 +218,7 @@ Còn nếu khai báo `void` thì nó không phải là constructor
 
 ## Ví dụ về contructor
 
-```
+```java
 // Ví dụ về constructor trong Java
 class ConsMain {
     private int x;
@@ -249,7 +248,7 @@ Constructor có thể có hoặc không chấp nhận đối số
 
 Constructor không có tham số nào khi định nghĩa được gọi là constructor không đối số (no-arg constructor).
 
-```
+```java
 accessModifier ClassName() {
     // constructor body
 }
@@ -259,7 +258,7 @@ accessModifier ClassName() {
 
 Ví dụ về constructor không đối số:
 
-```
+```java
 / Ví dụ về constructor không đối số
 class NoArgConstructor {
 
@@ -288,7 +287,7 @@ Trong ví dụ trên có từ khóa `private`, chỉ định mức độ truy c�
 
 Nếu không tự tạo constructor, trình biên dịch Java sẽ tự động tạo một constructor không có đối số trong runtime. Constructor này được gọi là **constructor mặc định**, nó sẽ khởi tạo bất kỳ biến thể hiện nào chưa được khởi tạo.
 
-```
+```java
 // Ví dụ constructor mặc định trong Java
 class ConstructorMacDinh {
 
@@ -311,7 +310,7 @@ a = 0
 b = false
 ```
 Chương trình trên tương đương với:
-```
+```java
 // Ví dụ constructor mặc định trong Java
 class ConstructorMacDinh {
 
@@ -336,7 +335,7 @@ class ConstructorMacDinh {
 
 ## Constructor có đối số (có tham số)
 
-```
+```java
 // Cú pháp của constructor có đối số
 accessModifier ClassName(arg1, arg2, ..., argn) {
     // constructor body
@@ -356,7 +355,7 @@ Có 4 mức độ truy cập trong Java:
 
 Từ khóa `this` đề cập đến object hiện tại
 
-```
+```java
 // Ví dụ từ khóa this trong java
 class MyClass {
     int bienTheHien;
