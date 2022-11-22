@@ -4,7 +4,7 @@
 ## Class trừu tượng
 Là một class không thể khởi tạo, có nghĩa là ta không thể tạo đối tượng từ class trừu tượng. Sử dụng từ khóa `abstract` để định nghĩa
 
-```
+```java
 // Cú pháp Class trừu tượng
 abstract class DongVat {
     // Thuộc tính
@@ -18,13 +18,13 @@ Tuy nhiên có thể tạo class con từ nó bằng cách tạo ra các đối 
 ## Phương thức trừu tượng
 Sử dụng từ khóa `abstract` để khai báo một phương thức
 
-```
+```java
 abstract void diTe();
 ```
 Vì nó là phương thức trừu tượng nên không có phần thân. Chỉ có class trừu tượng mới có thể chứa phương thức trừu tượng, nếu không chương trình sẽ xảy ra lỗi
 
 Một class trừu tượng có thể chứa cả phương thức trừu tượng hoặc phương thức thông thường
-```
+```java
 abstract class DongVat{
     
     // Phương thức thông thường
@@ -40,7 +40,7 @@ abstract class DongVat{
 
 ## Kế thừa class trừu tượng
 Một class trừu tượng không thể được khởi tạo, do vậy cần thực hiện kế thừa nó
-```
+```java
 abstract class DongVat{
     public void hienThiThongTin(){
         System.out.println("Tôi là Động vật");
@@ -60,7 +60,7 @@ class Main{
 ```
 
 ## Ghi đè phương thức trừu tượng
-```
+```java
 // Ghi đè phương thức trừu tượng
 abstract class DongVat {
     abstract void diTe();
@@ -87,7 +87,7 @@ class Main {
 ```
 
 ## Truy cập constructor của class trừu tượng
-```
+```java
 // Truy cập constructor của class trừu tượng
 abstract class DongVat {
     DongVat() {
@@ -106,7 +106,7 @@ Lưu ý: `super` nên luôn luôn là câu lệnh đầu tiên trong constructor
 
 # Interface
 **Interface** là một tập hợp các đặc tả mà các class khác sẽ khai triển (như namespace trong C++)
-```
+```java
 interface HinhDaGiac {
     public void tinhDienTich();
 }
@@ -116,7 +116,7 @@ interface HinhDaGiac {
 Giống như class trừu tượng, chúng ta không thể tạo các đối tượng trực tiếp từ interface. Tuy nhiên có thể triển khai các interface trong các class khác
 
 Chúng ta sử dụng từ khóa `implements` để thực hiện các interface
-```
+```java
 interface HinhDaGiac {
     void tinhDienTich(int chieuDai, int chieuRong);
 }
@@ -143,13 +143,13 @@ Ví dụ trên, chỉ cần truy cập interface vào h1
 ## Static Method và Private Method trong interface
 Tương tự như một class, chúng ta có thể truy cập các phương thức static của một interface bằng cách sử dụng các tham chiếu của nó
 
-```
+```java
 HinhDaGiac.staticMethod();
 ```
 
 ## Phương thức mặc định trong interface
 Để khai báo phương thức mặc định bên trong các interface, chúng ta cần dùng từ khóa `default`
-```
+```java
 public default tinhChuVi(){
     // Viết code như bình thường trong này
 }
@@ -161,7 +161,7 @@ Giả sử chúng ta thêm một phương thức mới trong interface một cá
 Để giải quyết việc này, sử dụng **phương thức mặc định** được kế thừa như các phương thức thông thường
 
 Ví dụ để hiểu rõ hơn về phương thức mặc định
-```
+```java
 interface  HinhDaGiac {
     void tinhDienTich();
     default void soCanh() {
@@ -210,7 +210,7 @@ Diện tích của hình vuông là: 25
 
 ## Từ khóa extends trong interface
 Tương tự như class, interface có thể sử dụng từ khóa `extends` để kế thừa từ interface khác
-```
+```java
 interface DuongThang {
     // Các trường
     // Các phương thức
@@ -222,7 +222,7 @@ interface HinhDaGiac extends DuongThang {
 }
 ```
 Ngoài ra, một interface cũng có thể kế thừa nhiều interface khác nhau
-```
+```java
 interface A {
     ...
 }
@@ -241,7 +241,7 @@ Phần này sẽ nói tới class lồng nhau và class bên trong thông qua c�
 
 Có thể định nghĩa một class bên trong một class khác, như vậy được gọi là **Nested class**
 
-```
+```java
 class OuterClass {
     ...
     class NestedClass {
@@ -254,7 +254,7 @@ class OuterClass {
 ## Non-Static Nested Class
 Là một class bên trong mộtt class khác, trong đó class có quyền truy cập vào các thành viên của class bên ngoài. Nó thường được gọi là **inner class** (class bên trong)
 
-```
+```java
 class LapTop {
     double gia;
     class CPU{
@@ -298,11 +298,11 @@ Oto.this.loaiXe.equals("N20")
 Có thể định nghĩa một class static bên trong class khác. Như vậy được gọi là **static nested class**
 
 Không giống như inner class, static nested class không thể truy cập các biến thành viên của lớp bên ngoài. Do đó, nó không có tham chiếu nào về class bên ngoài tồn tại như là `OuterClass.this`. Vì vậy có thể tạo đối tượng của static nested class trực tiếp như thế này:
-```
+```java
 OuterClass.InnerClass obj = new OuterClass.InnerClass();
 ```
 Ví dụ:
-```
+```java
 class LapTop {
     String model;
     public LapTop(String model) {
