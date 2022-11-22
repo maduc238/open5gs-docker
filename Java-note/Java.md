@@ -2,7 +2,7 @@
 
 # Hề lố
 Tạo một file `temp.java`
-```
+```java
 public class temp {
     public static void main(String[] args) {
         System.out.println("Hellooo World~~~");
@@ -12,7 +12,7 @@ public class temp {
 
 # StringBuffer
 Ví dụ về sử dụng String Buffer
-```
+```java
 long start = System.nanoTime();
 
 StringBuffer sb = new StringBuffer("Hello");
