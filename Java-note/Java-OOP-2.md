@@ -8,7 +8,7 @@ Nếu một **Java Interface** có một và chỉ một phương thức trừu 
 Ví dụ ``Runnable`` interface từ package `java.lang` là một **functional interface** vì chỉ có một phương thức là `run()`
 
 Ví dụ định nghĩa một Functional Interface trong Java:
-```
+```java
 import java.lang.FunctionalInterface;
     @FunctionalInterface
     public interface MyInterface{
@@ -24,22 +24,22 @@ Biểu thức lambda giới thiệu một cú pháp và toán tử mới trong n
 
 Thông thường chúng ta viết phương thức đơn giản trả về một hằng số như sau:
 
-```
+```java
 double getPiValue() ( return 3.1415; }
 ```
 
 Cách viết tương đương khi sử dụng lambda như sau:
-```
+```java
 ()->3.1415
 ```
 - Bên trái biểu thức chỉ định bất kỳ tham số khi nào cần thiết
 - Bên phải là phần thân, chỉ định hành động của biểu thức lambda
 
 Một vài ví dụ về lambda:
-```
+```java
 () -> System.out.println("Phần Lambda trong bài Tự học Lập trình Java");
 ```
-```
+```java
 () -> {
     double pi = 3.1415;
     return pi;
@@ -47,7 +47,7 @@ Một vài ví dụ về lambda:
 ```
 
 Tạo một file có tên là `IMyInterface.java`
-```
+```java
 // Đây là một Functional Interface
 @FunctionalInterface
 public interface IMyInterface{
@@ -59,7 +59,7 @@ Chữ **I** ở đầu tên **I**MyInteface là quy tắc đặt tên phổ bi�
 
 Bây giờ gán biểu thức lamda đến thể hiện của Functional Interface
 
-```
+```java
 public class LambdaMain {
  
     public static void main( String[] args ) {
@@ -77,7 +77,7 @@ Khi chạy chương trình kết quả nhận được là:
 Giá trị của Pi = 3.1415
 ```
 Ví dụ khác
-```
+```java
 // Ví dụ Biểu thức Lambda có tham số
 @FunctionalInterface
 interface IMyInterface {
@@ -109,7 +109,7 @@ Kết quả nhận được:
 
 ## Generic Functional Interface
 Có thể tạo Functional Interface chung, để bất kỳ loại dữ liệu nào cũng được chấp nhận
-```
+```java
 // IGenericInterface.java
 @FunctionalInterface
 interface IGenericInterface<T> {
@@ -123,7 +123,7 @@ Package `java.util.stream` cho phép thực hiện các hoạt động như sear
 
 Ví dụ có một luồng dữ liệu (giả sử một List các String) là sự kết hợp của tên quốc gia và thành phố
 
-```
+```java
 // Ví dụ Sử dụng Stream API và Biểu thức Lambda
 import java.util.ArrayList;
 import java.util.List;
@@ -169,7 +169,7 @@ Vietnam, HCM
 ## Từ khóa extends
 Ví dụ về kế thừa trong Java. Sử dụng `extends` để kế thừa class mẹ
 
-```
+```java
 class DongVat {
  
     public void an() {
@@ -213,7 +213,7 @@ Sử dụng phương thức này để định nghĩa cho class mẹ từ class 
 
 Ví dụ về phương thức trong class con sẽ ghi đè phương thức trong class mẹ
 
-```
+```java
 // Ví dụ Overloading trong Java
 class DongVat {
     protected String giong = "Động vật";
@@ -257,7 +257,7 @@ Chi tiết ghi đè phương thức sẽ được nói rõ hơn trong phần sau
 Từ khóa `instanceof` là một toán tử nhị phân. Nó được dùng để kiểm tra xem một một đối tượng có phải là một thể hiện của một class cụ thể hay không
 
 Cú pháp:
-```
+```java
 result = objectName instanceof className;
 ```
 Trong đó:
@@ -265,7 +265,7 @@ Trong đó:
 - `className` là tên class
 - `result` là kết quả trả về, `true` nếu đối tượng là thể hiện của class, `false` nếu ngược lại
 
-```
+```java
 // Ví dụ đơn giản toán tử instanceof
 class Main {
     public static void main (String[] args) {
@@ -286,7 +286,7 @@ tuoi là thể hiện của Integer: true
 ## Sử dụng toán tử instanceof trong kế thừa
 Trong trường hợp kết thừa, `instanceof` được sử dụng để kiểm tra xem một đối tượng của lớp con có phải là thể hiện của lớp mẹ hay không
 
-```
+```java
 // Ví dụ sử dụng instanceof trong kế thừa
 class DongVat {
 }
@@ -319,7 +319,7 @@ Tất cả các class được kế thừa từ class `Object`. Trong quá trìn
 ## Object Upcasting và Downcasting trong Java
 Một đối tượng của class con có thể được coi là một đối tượng của class mẹ. Điều này gọi là **upcasting**
 
-```
+```java
 // Ví dụ upcasting trong Java
 class DongVat {
     public void hienThiThongTin() {
@@ -343,7 +343,7 @@ Khi chạy chương trình:
 Tôi là động vật.
 ```
 **Downcasting** thì ngược lại, cú pháp phải thêm `instanceof`
-```
+```java
 // Ví dụ sửa lỗi Downcasting bằng instanceof
 class DongVat {
 }
@@ -380,7 +380,7 @@ Phải tuân theo 3 quy tắc sau:
 
 ## Sử dụng từ khóa super trong ghi đè phương thức
 Cách này được sử dụng để truy cập phương thức đã bị ghi đè
-```
+```java
 // Gọi phương thức đã bị ghi đè
 class DongVat {
     public void hienThiThongTin() {
@@ -438,7 +438,7 @@ Có 3 trường hợp sử dụng từ khóa super:
 Ví dụ sử dụng từ khóa super để truy cập phương thức bị ghi đè của class mje đã nói ở phần trên. Phần dưới đây sẽ nói chi tiết cho các trường hợp còn lại
 
 ## Sử dụng từ khóa super để truy cập thuộc tính của class mẹ
-```
+```java
 class DongVat {
     protected String giong ="Động vật";
 }
@@ -468,7 +468,7 @@ Tôi là Động vật
 Trong ví dụ này, super giúp truy cập thuộc tính `giong` của class mẹ
 
 ## Sử dụng từ khóa super truy cập constructor của class mẹ
-```
+```java
 class DongVat {
  
     // Constructor mặc định không đối số
