@@ -3,10 +3,10 @@
 ![YouTube Video Likes](https://img.shields.io/youtube/likes/6pnh7TqTU6c?style=social)
 
 Repositorie này chứa các phần:
-- :heart_eyes: Chạy Open5gs với phần user plane, control plane, kết hợp eNB, UE bằng srsRAN
-- :sunglasses: Sơ lược về hệ thống Location Based Services, sử dụng GMLC, E-SMLC
-- :stuck_out_tongue_winking_eye: Note về Java, Spring Framework
-- :sleepy: Note về cài và chạy JDK, maven, JDiameter
+- Chạy Open5gs với phần user plane, control plane, kết hợp eNB, UE bằng srsRAN
+- Sơ lược về hệ thống Location Based Services, sử dụng GMLC, E-SMLC
+- Note về Java, Spring Framework
+- Note về cài và chạy JDK, maven, JDiameter
 
 [Video thực hiện](https://www.youtube.com/watch?v=6pnh7TqTU6c)
 
